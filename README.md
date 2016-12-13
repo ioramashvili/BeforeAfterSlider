@@ -9,7 +9,6 @@
   <li>apply constraints</li>
   <li>apply BeforeAfterView as class</li>
   <li>set image1 and image2 in attributes inspector</li>
-  <li></li>
  </ul>
 
 <p align="center">
