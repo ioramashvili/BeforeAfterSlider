@@ -3,48 +3,8 @@
   <img src="https://media.giphy.com/media/sZyq63KVLYuvm/giphy.gif"/>
 </p>
  
-<h1> instructions </h1>
-<h3>The library uses <b>Glide</b> for image loading</h3>
-```xml
-<!-- Inside your xml layout -->
- 
-  <com.github.developer__.BeforeAfterSlider
-        android:id="@+id/mySlider"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:slider_thumb="@mipmap/white_circle"
-        >
-  </com.github.developer__.BeforeAfterSlider>
-```
- 
-```kotlin
-  //Inside java
- 
-  mySlider.setBeforeImage(imgUrl1).setAfterImage(imgUrl2)  
-```
- 
-```kotlin
-  //to change slider_thumb programmaticaly
-  mySlider.setSliderThumb(yourDrawable)
-```
- 
-```xml  
-  <!--  to set images from xml  -->
-  app:before_image="@mipmap/image1"
-  app:after_image="@mipmap/image2"
-```
- 
-<h1>Maven dependency</h1>
-```groovy
-<dependency>
-  <groupId>com.github.developer--</groupId>
-  <artifactId>beforeafterslider</artifactId>
-  <version>1.0.4</version>
-  <type>pom</type>
-</dependency>
-```
-<h1>Gradle dependency</h1>
- 
-```groovy        
-  compile 'com.github.developer--:beforeafterslider:1.0.4'
-```
+<h1> usege </h1>
+<h3> drop uiview in viewcontroller </h3>
+<h3> apply BeforeAfterView as class </h3>
+<h3> set iamge1 and image2 in attributes inspector </h3>
+<img src="https://s23.postimg.org/t5a8clz6j/Screen_Shot_2016_12_13_at_1_11_41_PM.png"/>
