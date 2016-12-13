@@ -1,6 +1,6 @@
 # <h1 align="center">Before and after image slider</h1>
 <p align="center">
-  <img src="https://media.giphy.com/media/sZyq63KVLYuvm/giphy.gif"/>
+  <img src="demo.gif"/>
 </p>
  
 <h1> usege </h1>
