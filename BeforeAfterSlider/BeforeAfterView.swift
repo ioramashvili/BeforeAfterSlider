@@ -3,8 +3,8 @@ import UIKit
 @IBDesignable
 class BeforeAfterView: UIView {
     
-    var leading: NSLayoutConstraint!
-    var originRect: CGRect!
+    fileprivate var leading: NSLayoutConstraint!
+    fileprivate var originRect: CGRect!
     
     @IBInspectable
     var image1: UIImage = UIImage() {
@@ -17,6 +17,13 @@ class BeforeAfterView: UIView {
     var image2: UIImage = UIImage() {
         didSet {
             imageView2.image = image2
+        }
+    }
+    
+    @IBInspectable
+    var thumbColor: UIColor = UIColor.white {
+        didSet {
+            thumb.backgroundColor = thumbColor
         }
     }
 
@@ -43,14 +50,14 @@ class BeforeAfterView: UIView {
         return v
     }()
     
-    fileprivate lazy var navigationView: UIView = {
+    fileprivate lazy var thumbWrapper: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.clipsToBounds = true
         return v
     }()
     
-    fileprivate lazy var navigationButtonView: UIView = {
+    fileprivate lazy var thumb: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor.white
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -60,12 +67,12 @@ class BeforeAfterView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        sharedInitialization()
+        initialize()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        sharedInitialization()
+        initialize()
     }
     
     var isOriginRectInitialized = false
@@ -82,14 +89,14 @@ class BeforeAfterView: UIView {
 }
 
 extension BeforeAfterView {
-    fileprivate func sharedInitialization() {
+    fileprivate func initialize() {
 
         image1Wrapper.addSubview(imageView1)
         addSubview(imageView2)
         addSubview(image1Wrapper)
         
-        navigationView.addSubview(navigationButtonView)
-        addSubview(navigationView)
+        thumbWrapper.addSubview(thumb)
+        addSubview(thumbWrapper)
         
         NSLayoutConstraint.activate([
             imageView2.topAnchor.constraint(equalTo: topAnchor, constant: 0),
@@ -113,25 +120,25 @@ extension BeforeAfterView {
         ])
         
         NSLayoutConstraint.activate([
-            navigationView.topAnchor.constraint(equalTo: image1Wrapper.topAnchor, constant: 0),
-            navigationView.bottomAnchor.constraint(equalTo: image1Wrapper.bottomAnchor, constant: 0),
-            navigationView.leadingAnchor.constraint(equalTo: image1Wrapper.leadingAnchor, constant: -20),
-            navigationView.widthAnchor.constraint(equalToConstant: 40)
+            thumbWrapper.topAnchor.constraint(equalTo: image1Wrapper.topAnchor, constant: 0),
+            thumbWrapper.bottomAnchor.constraint(equalTo: image1Wrapper.bottomAnchor, constant: 0),
+            thumbWrapper.leadingAnchor.constraint(equalTo: image1Wrapper.leadingAnchor, constant: -20),
+            thumbWrapper.widthAnchor.constraint(equalToConstant: 40)
         ])
         
         NSLayoutConstraint.activate([
-            navigationButtonView.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor, constant: 0),
-            navigationButtonView.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor, constant: 0),
-            navigationButtonView.widthAnchor.constraint(equalTo: navigationView.widthAnchor, multiplier: 1),
-            navigationButtonView.heightAnchor.constraint(equalTo: navigationView.widthAnchor, multiplier: 1)
+            thumb.centerXAnchor.constraint(equalTo: thumbWrapper.centerXAnchor, constant: 0),
+            thumb.centerYAnchor.constraint(equalTo: thumbWrapper.centerYAnchor, constant: 0),
+            thumb.widthAnchor.constraint(equalTo: thumbWrapper.widthAnchor, multiplier: 1),
+            thumb.heightAnchor.constraint(equalTo: thumbWrapper.widthAnchor, multiplier: 1)
         ])
         
-        navigationButtonView.layer.cornerRadius = 20
+        thumb.layer.cornerRadius = 20
         imageView1.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
         
         let tap = UIPanGestureRecognizer(target: self, action: #selector(gesture(sender:)))
-        navigationView.isUserInteractionEnabled = true
-        navigationView.addGestureRecognizer(tap)
+        thumbWrapper.isUserInteractionEnabled = true
+        thumbWrapper.addGestureRecognizer(tap)
     }
     
     

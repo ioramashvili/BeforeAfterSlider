@@ -31,6 +31,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="image2" value="image2"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="image1" value="image1"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="thumbColor">
+                                        <color key="value" red="0.090196078430000007" green="0.58823529409999997" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
