@@ -3,7 +3,15 @@
   <img src="demo.gif"/>
 </p>
  
-<h1> usege </h1>
+ <h1> usege </h1>
+ <ul>
+  <li>drag UIVew on UIViewController</li>
+  <li>apply constraints</li>
+  <li>apply BeforeAfterView as class</li>
+  <li>set image1 and image2 in attributes inspector</li>
+  <li></li>
+ </ul>
+
 <h3> drop UIVew in UIViewController </h3>
 <h3> apply BeforeAfterView as class </h3>
 <h3> set image1 and image2 in attributes inspector </h3>
