@@ -65,6 +65,12 @@ class BeforeAfterView: UIView {
         return v
     }()
     
+    lazy var setupLeadingAndOriginRect: Void = {
+        self.leading.constant = frame.width / 2
+        self.layoutIfNeeded()
+        self.originRect = self.image1Wrapper.frame
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -75,16 +81,9 @@ class BeforeAfterView: UIView {
         initialize()
     }
     
-    var isOriginRectInitialized = false
     override func layoutSubviews() {
         super.layoutSubviews()
-        if !isOriginRectInitialized {
-            isOriginRectInitialized = true
-            layoutSubviews()
-            leading.constant = frame.width / 2
-            layoutIfNeeded()
-            originRect = image1Wrapper.frame
-        }
+        _ = setupLeadingAndOriginRect
     }
 }
 
@@ -106,6 +105,7 @@ extension BeforeAfterView {
         ])
         
         leading = image1Wrapper.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0)
+        
         NSLayoutConstraint.activate([
             image1Wrapper.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             image1Wrapper.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
@@ -133,6 +133,8 @@ extension BeforeAfterView {
             thumb.heightAnchor.constraint(equalTo: thumbWrapper.widthAnchor, multiplier: 1)
         ])
         
+        leading.constant = frame.width / 2
+        
         thumb.layer.cornerRadius = 20
         imageView1.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
         
@@ -142,7 +144,7 @@ extension BeforeAfterView {
     }
     
     
-    func gesture(sender: UIPanGestureRecognizer) {
+    @objc func gesture(sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self)
         switch sender.state {
         case .began, .changed:
@@ -153,8 +155,7 @@ extension BeforeAfterView {
             layoutIfNeeded()
         case .ended, .cancelled:
             originRect = image1Wrapper.frame
-        default:
-            print("default")
+        default: break
         }
     }
 }
