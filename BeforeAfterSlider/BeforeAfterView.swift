@@ -66,7 +66,7 @@ public class BeforeAfterView: UIView {
     }()
     
     lazy fileprivate var setupLeadingAndOriginRect: Void = {
-        self.leading.constant = frame.width / 2
+        self.leading.constant = self.frame.width / 2
         self.layoutIfNeeded()
         self.originRect = self.image1Wrapper.frame
     }()
