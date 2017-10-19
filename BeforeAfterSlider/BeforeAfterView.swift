@@ -1,27 +1,27 @@
 import UIKit
 
 @IBDesignable
-class BeforeAfterView: UIView {
+public class BeforeAfterView: UIView {
     
     fileprivate var leading: NSLayoutConstraint!
     fileprivate var originRect: CGRect!
     
     @IBInspectable
-    var image1: UIImage = UIImage() {
+    public var image1: UIImage = UIImage() {
         didSet {
             imageView1.image = image1
         }
     }
     
     @IBInspectable
-    var image2: UIImage = UIImage() {
+    public var image2: UIImage = UIImage() {
         didSet {
             imageView2.image = image2
         }
     }
     
     @IBInspectable
-    var thumbColor: UIColor = UIColor.white {
+    public var thumbColor: UIColor = UIColor.white {
         didSet {
             thumb.backgroundColor = thumbColor
         }
@@ -65,7 +65,7 @@ class BeforeAfterView: UIView {
         return v
     }()
     
-    lazy var setupLeadingAndOriginRect: Void = {
+    lazy fileprivate var setupLeadingAndOriginRect: Void = {
         self.leading.constant = frame.width / 2
         self.layoutIfNeeded()
         self.originRect = self.image1Wrapper.frame
@@ -76,12 +76,12 @@ class BeforeAfterView: UIView {
         initialize()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialize()
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         _ = setupLeadingAndOriginRect
     }
